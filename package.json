@@ -1,7 +1,7 @@
 {
-    "name": "vscode-extension-test",
-    "displayName": "vscode-extension-test",
-    "description": "test",
+    "name": "nestjs-project-scaffolding",
+    "displayName": "NestJS Project Scaffolding",
+    "description": "Visual Studio Code extension, for scaffolding a new NestJS project",
     "version": "0.0.1",
     "publisher": "h",
     "engines": {
@@ -11,14 +11,14 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.newNestJSProject"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello Friend"
+                "command": "extension.newNestJSProject",
+                "title": "New NestJS Project"
             }
         ]
     },
@@ -35,5 +35,9 @@
         "tslint": "^5.8.0",
         "@types/node": "^7.0.43",
         "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "change-case": "^3.0.2",
+        "custom-template-generator": "^0.1.2"
     }
 }
