@@ -1,10 +1,12 @@
 import { Uri } from "vscode";
 import { TextCaseVariants } from "./text-case-variants";
-const generator = require("custom-template-generator");
+import * as path from "path";
+//const generator = require("custom-template-generator");
+const copydir = require("copy-dir");
 
 export class SourceCodeGenerator {
 
-    private generatorOptions = {};
+    private generatorOptions: any = {};
 
     constructor(
         projectName: string,
@@ -15,7 +17,7 @@ export class SourceCodeGenerator {
 
         this.generatorOptions = {
             componentName: dataValues.pascalCaseString,
-            customTemplatesUrl: '/templates/',
+            customTemplatesUrl: '../../templates/',
             templateName: '',
             dest: destinationFolderPath.fsPath,
             showPrompt: false,
@@ -25,9 +27,26 @@ export class SourceCodeGenerator {
     }
 
     public async startScaffolding() {
+        await this.copyTemplatesToDestination();
+        // return new Promise((resolve, reject) => {
+        //     //generator(this.generatorOptions);
+        //     resolve();
+        // });
+    }
+
+    public async copyTemplatesToDestination() {
         return new Promise((resolve, reject) => {
-            generator(this.generatorOptions);
-            resolve();
+          copydir(
+            path.resolve(this.generatorOptions.customTemplatesUrl),
+            this.generatorOptions.dest,
+            (err: any) => {
+              if (err) {
+                reject();
+              } else {
+                resolve();
+              }
+            }
+          );
         });
     }
 }
