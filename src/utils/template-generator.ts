@@ -2,6 +2,7 @@ import { FileTemplateBase } from "./file-template-base";
 import { TestFileTemplate } from "../templates/test-template";
 import * as Path from "path";
 import * as fs from "fs";
+let fx = require("mkdir-recursive");
 
 export class TemplateGenerator {
     public templates: Array<FileTemplateBase> = [];
@@ -32,6 +33,8 @@ export class TemplateGenerator {
         this.templates.forEach(template => {
             let path = Path.join(this.generatorOptions.dest, this.replaceAllWildCards(template.filePath));
             let content = this.replaceAllWildCards(template.fileTemplate);
+            let parrentDir = Path.dirname(path);
+            fs.mkdirSync(parrentDir);
             fs.appendFileSync(path, content, 'utf8');
         });
     }

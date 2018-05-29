@@ -39,6 +39,7 @@
     "dependencies": {
         "change-case": "^3.0.2",
         "copy-dir": "^0.3.0",
-        "custom-template-generator": "^0.1.2"
+        "custom-template-generator": "^0.1.2",
+        "mkdir-recursive": "^0.4.0"
     }
 }
