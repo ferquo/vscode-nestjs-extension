@@ -1,6 +1,7 @@
 import { Uri } from "vscode";
 import { TextCaseVariants } from "./text-case-variants";
 import * as path from "path";
+import { TemplateGenerator } from "./template-generator";
 //const generator = require("custom-template-generator");
 const copydir = require("copy-dir");
 
@@ -27,7 +28,9 @@ export class SourceCodeGenerator {
     }
 
     public async startScaffolding() {
-        await this.copyTemplatesToDestination();
+        let tg = new TemplateGenerator(this.generatorOptions);
+        tg.generateFilesFormTemplates();
+        //await this.copyTemplatesToDestination();
         // return new Promise((resolve, reject) => {
         //     //generator(this.generatorOptions);
         //     resolve();
