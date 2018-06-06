@@ -2,8 +2,8 @@
     "name": "nestjs-project-scaffolding",
     "displayName": "NestJS Project Scaffolding",
     "description": "Visual Studio Code extension, for scaffolding a new NestJS project",
-    "version": "0.0.1",
-    "publisher": "h",
+    "version": "1.0.0",
+    "publisher": "Ferenc",
     "engines": {
         "vscode": "^1.23.0"
     },
